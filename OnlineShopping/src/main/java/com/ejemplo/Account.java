@@ -1,5 +1,8 @@
 package com.ejemplo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import tipos.Address;
 import tipos.Date;
 
@@ -8,129 +11,85 @@ import tipos.Date;
  */
 public class Account {
 
-  //
-  // Fields
-  //
+	private String id;
+    private Address billingAddress;
+    private boolean isClosed;
+    private Date open;
+    private Date closed;
 
-  private String id;
-  private Address billing_address;
-  private Boolean is_closed;
-  private Date open;
-  private Date closed;
-  private Order nuevo_atributo_1;
-  
-  //
-  // Constructors
-  //
-  public Account () { };
-  
-  //
-  // Methods
-  //
+    private List<Order> orders;
+    private List<Payment> payments;
 
+    public Account() {
+        orders = new ArrayList<>();
+        payments = new ArrayList<>();
+    }
 
-  //
-  // Accessor methods
-  //
+    public Account(String id, Address billingAddress, Date open) {
+        this();
+        this.id = id;
+        this.billingAddress = billingAddress;
+        this.open = open;
+    }
 
-  /**
-   * Set the value of id
-   * @param newVar the new value of id
-   */
-  public void setId (String newVar) {
-    id = newVar;
-  }
+    public String getId() {
+    	return id; 
+    }
+    
+    public void setId(String id) { 
+    	this.id = id; 
+    }
 
-  /**
-   * Get the value of id
-   * @return the value of id
-   */
-  public String getId () {
-    return id;
-  }
+    public Address getBillingAddress() { 
+    	return billingAddress; 
+    }
+    
+    public void setBillingAddress(Address billingAddress) {
+    	this.billingAddress = billingAddress; 
+    }
 
-  /**
-   * Set the value of billing_address
-   * @param newVar the new value of billing_address
-   */
-  public void setBilling_address (Address newVar) {
-    billing_address = newVar;
-  }
+    public boolean isClosed() { 
+    	return isClosed; 
+    }
+    
+    public void setClosed(boolean closed) { 
+    	isClosed = closed; 
+    }
 
-  /**
-   * Get the value of billing_address
-   * @return the value of billing_address
-   */
-  public Address getBilling_address () {
-    return billing_address;
-  }
+    public Date getOpen() { 
+    	return open; 
+    }
+    
+    public void setOpen(Date open) { 
+    	this.open = open; 
+    }
 
-  /**
-   * Set the value of is_closed
-   * @param newVar the new value of is_closed
-   */
-  public void setIs_closed (Boolean newVar) {
-    is_closed = newVar;
-  }
+    public Date getClosed() { 
+    	return closed; 
+    }
+    
+    public void setClosedDate(Date closed) { 
+    	this.closed = closed; 
+    }
 
-  /**
-   * Get the value of is_closed
-   * @return the value of is_closed
-   */
-  public Boolean getIs_closed () {
-    return is_closed;
-  }
+    public List<Order> getOrders() { 
+    	return orders; 
+    }
 
-  /**
-   * Set the value of open
-   * @param newVar the new value of open
-   */
-  public void setOpen (Date newVar) {
-    open = newVar;
-  }
+    public List<Payment> getPayments() { 
+    	return payments; 
+    }
 
-  /**
-   * Get the value of open
-   * @return the value of open
-   */
-  public Date getOpen () {
-    return open;
-  }
+    public void addOrder(Order order) {
+        orders.add(order);
+    }
 
-  /**
-   * Set the value of closed
-   * @param newVar the new value of closed
-   */
-  public void setClosed (Date newVar) {
-    closed = newVar;
-  }
+    public void addPayment(Payment payment) {
+        payments.add(payment);
+    }
 
-  /**
-   * Get the value of closed
-   * @return the value of closed
-   */
-  public Date getClosed () {
-    return closed;
-  }
-
-  /**
-   * Set the value of nuevo_atributo_1
-   * @param newVar the new value of nuevo_atributo_1
-   */
-  public void setNuevo_atributo_1 (Order newVar) {
-    nuevo_atributo_1 = newVar;
-  }
-
-  /**
-   * Get the value of nuevo_atributo_1
-   * @return the value of nuevo_atributo_1
-   */
-  public Order getNuevo_atributo_1 () {
-    return nuevo_atributo_1;
-  }
-
-  //
-  // Other methods
-  //
+    public double getTotalPayments() {
+        return payments.stream().mapToDouble(Payment::getTotal).sum();
+    }
 
 }
