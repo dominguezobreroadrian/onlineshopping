@@ -55,11 +55,11 @@ public class AccountTest {
 	
 	@Test
 	void testAddPayment() {
-		Payment pay = new Payment("15", 1300, "Pagar urgentemente", date);
+		Payment pay = new Payment("15", 1300, "Pagado con retraso", date);
 		account.addPayment(pay);
 		
 		String resultado = account.getPayments().get(0).getDetails();
-		String resultadoEsperado = "Pagar urgentemente";
+		String resultadoEsperado = "Pagado con retraso";
 		
 		assertEquals(resultadoEsperado, resultado);
 	}
