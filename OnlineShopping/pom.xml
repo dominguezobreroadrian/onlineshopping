@@ -14,5 +14,10 @@
       <version>5.10.2</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+    	<groupId>com.miempresa</groupId>
+    	<artifactId>Tienda</artifactId>
+    	<version>1.0-SNAPSHOT</version>
+    </dependency>
   </dependencies>
 </project>
