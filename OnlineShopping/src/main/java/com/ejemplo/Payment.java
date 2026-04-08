@@ -14,11 +14,11 @@ public class Payment {
   
   public Payment() {}
   
-  public Payment(String id, double total, String details) {
+  public Payment(String id, double total, String details, Date paid) {
     this.id = id;
     this.total = total;
     this.details = details;
-    this.paid = new Date();
+    this.paid = paid;
   }
   
   public String getId() { 
